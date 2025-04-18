@@ -11,4 +11,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'items#index'
+
+  # Rotas RESTful padrão (exceto show, new e edit que não usaremos)
+  resources :items, except: [:show, :new, :edit] do
+    # Rota customizada para marcar/desmarcar como comprado
+    member do
+      patch :toggle
+    end
+  end
 end
