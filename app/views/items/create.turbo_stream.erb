@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "items", @item %>
+<%= turbo_stream.replace dom_id(Item.new, 'form'), partial: 'items/form', locals: { item: Item.new } %>
