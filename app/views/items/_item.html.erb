@@ -1,0 +1,17 @@
+<div id="<%= dom_id item %>" class="flex items-center justify-between p-2 border rounded <%= 'bg-gray-100' if item.purchased? %>">
+  <div class="flex items-center space-x-4">
+    <%= button_to toggle_item_path(item), method: :patch, class: "w-5 h-5 rounded border #{item.purchased? ? 'bg-green-500 border-green-600' : 'border-gray-300'}" do %>
+      <% if item.purchased? %>
+        <span>✓</span>
+      <% end %>
+    <% end %>
+
+    <span class="<%= 'line-through text-gray-500' if item.purchased? %>">
+      <%= item.name %> (<%= item.quantity %>)
+    </span>
+  </div>
+
+  <%= button_to item_path(item), method: :delete, class: "text-red-500 hover:text-red-700", data: { turbo_confirm: "Remover este item?" } do %>
+    ×
+  <% end %>
+</div>
